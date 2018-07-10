@@ -9,4 +9,6 @@ COPY . /polyaxon
 
 RUN pip3 install --no-cache-dir -r /requirements/monitor_namespace/requirements-dev.txt
 
-ENTRYPOINT ["python3", "polyaxon/manage.py",  "monitor_namespace"]
+WORKDIR /polyaxon/polyaxon
+
+ENTRYPOINT ["/bin/bash", "./entrypoint.sh"]

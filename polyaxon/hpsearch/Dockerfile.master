@@ -11,4 +11,4 @@ RUN pip3 install --no-cache-dir -r /requirements/hpsearch/requirements-dev.txt
 
 WORKDIR /polyaxon/polyaxon
 
-ENTRYPOINT ["celery", "-A", "polyaxon", "worker" , "--loglevel=INFO", "--without-mingle", "--without-gossip", "-n default@%h", "-Q"]
+ENTRYPOINT ["/bin/bash", "./entrypoint.sh"]

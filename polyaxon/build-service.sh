@@ -17,6 +17,9 @@ fi
 
 echo "Copy Dockerfile and .dockerignore"
 cp ../../polyaxon/$1/.dockerignore .
+if [ -f ../../polyaxon/$1/entrypoint.sh ]; then
+    cp ./../polyaxon/$1/entrypoint.sh ./polyaxon/entrypoint.sh
+fi
 
 if [ "$2" == "master" ]
     then
