@@ -1,4 +1,4 @@
 #!/bin/bash
 
-./check.sh
-../web/start.sh
+./polyaxon/check.sh
+./web/start.sh
