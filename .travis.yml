@@ -7,20 +7,10 @@ language:
   - bash
 
 script:
-  - ./build.sh 2
-  - ./test.sh 2
-  - ./build.sh 3
-  - ./test.sh 3
-  - ./polyaxon-lib/build.sh "$TRAVIS_BRANCH" "$TRAVIS_BRANCH"
   - ./polyaxon/build-services.sh "$TRAVIS_BRANCH" "$TRAVIS_BRANCH"
 
 after_success:
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
-  - if [ "$TRAVIS_BRANCH" == "master" ]; then
-    ./push.sh 2;
-    ./push.sh 3;
-    fi
-  - ./polyaxon-lib/push.sh "$TRAVIS_BRANCH"
   - ./polyaxon/push-services.sh "$TRAVIS_BRANCH"
 
 notifications:
