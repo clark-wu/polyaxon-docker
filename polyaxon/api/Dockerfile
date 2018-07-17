@@ -20,4 +20,4 @@ RUN cp /polyaxon/web/nginx.conf /etc/nginx/sites-available/polyaxon.config
 RUN ln -s /etc/nginx/sites-available/polyaxon.config /etc/nginx/sites-enabled/polyaxon.conf
 RUN cp /polyaxon/web/uwsgi_params /etc/nginx/uwsgi_params
 
-ENTRYPOINT ["/bin/bash", "./web/start.sh"]
+ENTRYPOINT ["/bin/bash", "./polyaxon/entrypoint.sh"]
