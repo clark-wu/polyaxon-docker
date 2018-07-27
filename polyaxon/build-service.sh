@@ -1,9 +1,15 @@
-#!/usr/bin/env bash
+#!/bin/bash
+set -e
+set -o pipefail
+
 if [ $# -lt 2 ]
   then
     echo "You should provide at least 2 args: image name and tag"
-     exit 1
+    exit 1
 fi
+
+IMAGE_NAME=$1
+IMAGE_TAG=$2
 
 cd clones/polyaxon
 
@@ -16,37 +22,37 @@ if [ -f Dockerfile ]; then
 fi
 
 echo "Copy Dockerfile and .dockerignore"
-cp ../../polyaxon/$1/.dockerignore .
-if [ -f ../../polyaxon/$1/entrypoint.sh ]; then
-    cp ../../polyaxon/$1/entrypoint.sh ./polyaxon/entrypoint.sh
+cp "../../polyaxon/${IMAGE_NAME}/.dockerignore" .
+if [ -f "../../polyaxon/${IMAGE_NAME}/entrypoint.sh" ]; then
+    cp "../../polyaxon/${IMAGE_NAME}/entrypoint.sh" ./polyaxon/entrypoint.sh
 fi
 
-if [ "$2" == "master" ]
+if [ "${IMAGE_TAG}" == "master" ]
     then
-        cp ../../polyaxon/$1/Dockerfile.master Dockerfile
+        cp "../../polyaxon/${IMAGE_NAME}/Dockerfile.master" Dockerfile
     else
         cd ../
         if [ -f is_tag ]
             then
                 echo "Build for Tag with Dockerfile"
                 cd polyaxon
-                cp ../../polyaxon/$1/Dockerfile .
+                cp "../../polyaxon/${IMAGE_NAME}/Dockerfile" .
             else
                 echo "Build for Branch with Dockerfile.master"
                 cd polyaxon
-                cp ../../polyaxon/$1/Dockerfile.master Dockerfile
+                cp "../../polyaxon/${IMAGE_NAME}/Dockerfile.master" Dockerfile
         fi
 fi
 
-if [ "$1" == "core" ]
+if [ "${IMAGE_NAME}" == "core" ]
     then
-       echo "Build Base image for $1"
-       docker build -t polyaxon/polyaxon-$1 .
+       echo "Build Base image for ${IMAGE_NAME}"
+       docker build -t "polyaxon/polyaxon-${IMAGE_NAME}" .
     else
-       echo "Build Base image for $1:$2"
-       docker build -t polyaxon/polyaxon-$1:$2 .
-       if [ "$2" == "master" ]
+       echo "Build Base image for ${IMAGE_NAME}:${IMAGE_TAG}"
+       docker build -t "polyaxon/polyaxon-${IMAGE_NAME}:${IMAGE_TAG}" .
+       if [ "${IMAGE_TAG}" == "master" ]
            then
-               docker build -t polyaxon/polyaxon-$1:latest .
+               docker build -t "polyaxon/polyaxon-${IMAGE_NAME}:latest" .
        fi
 fi

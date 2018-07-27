@@ -1,27 +1,32 @@
 #!/usr/bin/env bash
 if [ $# -lt 2 ]
   then
-    echo "You should provide at least 2 args: branch tag"
+    echo "You should provide at least 2 args: branch docker-tag"
      exit 1
 fi
 
-./polyaxon/prepare.sh $1
+BRANCH=$1
+IMAGE_TAG=$(echo "$2" | tr \/ -)
 
-./polyaxon/build-service.sh core $2
+echo "Preparing for docker build..."
+./polyaxon/prepare.sh "${BRANCH}"
 
-./polyaxon/build-service.sh api $2
-./polyaxon/build-service.sh beat $2
-./polyaxon/build-service.sh crons $2
-./polyaxon/build-service.sh dockerizer $2
-./polyaxon/build-service.sh events-handlers $2
-./polyaxon/build-service.sh hpsearch $2
-./polyaxon/build-service.sh manage $2
-./polyaxon/build-service.sh monitor-namespace $2
-./polyaxon/build-service.sh monitor-resources $2
-./polyaxon/build-service.sh monitor-statuses $2
-./polyaxon/build-service.sh monolith $2
-./polyaxon/build-service.sh scheduler $2
-./polyaxon/build-service.sh sidecar $2
-./polyaxon/build-service.sh streams $2
+echo "Staring build..."
+./polyaxon/build-service.sh core "${IMAGE_TAG}"
+./polyaxon/build-service.sh api "${IMAGE_TAG}"
+./polyaxon/build-service.sh beat "${IMAGE_TAG}"
+./polyaxon/build-service.sh crons "${IMAGE_TAG}"
+./polyaxon/build-service.sh dockerizer "${IMAGE_TAG}"
+./polyaxon/build-service.sh events-handlers "${IMAGE_TAG}"
+./polyaxon/build-service.sh hpsearch "${IMAGE_TAG}"
+./polyaxon/build-service.sh manage "${IMAGE_TAG}"
+./polyaxon/build-service.sh monitor-namespace "${IMAGE_TAG}"
+./polyaxon/build-service.sh monitor-resources "${IMAGE_TAG}"
+./polyaxon/build-service.sh monitor-statuses "${IMAGE_TAG}"
+./polyaxon/build-service.sh monolith "${IMAGE_TAG}"
+./polyaxon/build-service.sh scheduler "${IMAGE_TAG}"
+./polyaxon/build-service.sh sidecar "${IMAGE_TAG}"
+./polyaxon/build-service.sh streams "${IMAGE_TAG}"
 
+echo "Cleaning up..."
 ./polyaxon/clean.sh

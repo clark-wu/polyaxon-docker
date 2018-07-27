@@ -1,32 +1,37 @@
 #!/usr/bin/env bash
+set -e
+
 if [ $# -lt 1 ]
   then
     echo "You should provide at least 1 args: branch"
      exit 1
 fi
 
-VAR_REPO=https://github.com/polyaxon/polyaxon.git
+BRANCH=$1
+GIT_REPO_OWNER=${GIT_REPO_OWNER:-polyaxon}
+GIT_REPO="https://github.com/${GIT_REPO_OWNER}/polyaxon.git"
+GIT_CLONE_DIR=${GIT_CLONE_DIR:-clones}
 
-echo "Clone repo $VAR_REPO"
-mkdir clones
-cd clones/
-git clone $VAR_REPO
+echo "Clonning git repo: $GIT_REPO"
+rm -rf "${GIT_CLONE_DIR}"
+mkdir "${GIT_CLONE_DIR}"
+cd "${GIT_CLONE_DIR}"/
+git clone "${GIT_REPO}"
 cd polyaxon
 
-if [ "$1" != "master" ]
+if [ "${BRANCH}" != "master" ]
   then
     git fetch --all --tags --prune
 
     if
-        git rev-parse $1 >/dev/null 2>&1
+        git rev-parse "${BRANCH}" >/dev/null 2>&1
     then
-        git checkout tags/$1 -b $1
+        git checkout tags/"${BRANCH}" -b "${}"
         echo "Using tag"
         cd ../
         touch is_tag
     else
-        git checkout $1
-        echo "Using branch"
+        git checkout "${BRANCH}"
+        echo "Using branch: ${BRANCH}"
     fi
-
 fi
