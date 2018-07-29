@@ -26,7 +26,7 @@ if [ "${BRANCH}" != "master" ]
     if
         git rev-parse "${BRANCH}" >/dev/null 2>&1
     then
-        git checkout tags/"${BRANCH}" -b "${}"
+        git checkout tags/"${BRANCH}" -b "${BRANCH}"
         echo "Using tag"
         cd ../
         touch is_tag
