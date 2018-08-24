@@ -26,6 +26,7 @@ polyaxon/polyaxon/env_vars/local.json
 docs/
 client/
 deploy/
+polyaxon/fixtures
 *.sock
 tests/
 cmd/
