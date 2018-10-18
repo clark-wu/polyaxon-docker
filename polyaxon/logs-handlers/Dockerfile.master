@@ -2,12 +2,12 @@ FROM polyaxon/polyaxon-core
 
 MAINTAINER mourad mourafiq <mouradmourafiq@gmail.com>
 
-ENV POLYAXON_SERVICE=events_handlers
+ENV POLYAXON_SERVICE=logs_handlers
 
 WORKDIR /polyaxon
 COPY . /polyaxon
 
-RUN pip3 install --no-cache-dir -r /requirements/events_handlers/requirements-dev.txt
+RUN pip3 install --no-cache-dir -r /requirements/logs_handlers/requirements-dev.txt
 
 WORKDIR /polyaxon/polyaxon
 

@@ -36,6 +36,12 @@ if [ "$1" == "master" ]
     then
         docker push polyaxon/polyaxon-events-handlers:latest
 fi
+echo "Push image polyaxon/polyaxon-logs-handlers:$1"
+docker push polyaxon/polyaxon-logs-handlers:$1
+if [ "$1" == "master" ]
+    then
+        docker push polyaxon/polyaxon-logs-handlers:latest
+fi
 echo "Push image polyaxon/polyaxon-hpsearch:$1"
 docker push polyaxon/polyaxon-hpsearch:$1
 if [ "$1" == "master" ]
