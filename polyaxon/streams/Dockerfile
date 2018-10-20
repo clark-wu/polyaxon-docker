@@ -1,6 +1,6 @@
 FROM polyaxon/polyaxon-core
 
-MAINTAINER mourad mourafiq <mouradmourafiq@gmail.com>
+MAINTAINER mourad mourafiq <mourad@polyaxon.com>
 
 ENV POLYAXON_SERVICE=streams
 

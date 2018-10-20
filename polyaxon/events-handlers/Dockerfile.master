@@ -2,12 +2,12 @@ FROM polyaxon/polyaxon-core
 
 MAINTAINER mourad mourafiq <mourad@polyaxon.com>
 
-ENV POLYAXON_SERVICE=crons
+ENV POLYAXON_SERVICE=events_handlers
 
 WORKDIR /polyaxon
 COPY . /polyaxon
 
-RUN pip3 install --no-cache-dir -r /requirements/crons/requirements.txt
+RUN pip3 install --no-cache-dir -r /requirements/events_handlers/requirements-dev.txt
 
 WORKDIR /polyaxon/polyaxon
 

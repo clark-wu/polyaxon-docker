@@ -30,6 +30,12 @@ if [ "$1" == "master" ]
     then
         docker push polyaxon/polyaxon-dockerizer:latest
 fi
+echo "Push image polyaxon/polyaxon-events-handlers:$1"
+docker push polyaxon/polyaxon-events-handlers:$1
+if [ "$1" == "master" ]
+    then
+        docker push polyaxon/polyaxon-events-handlers:latest
+fi
 echo "Push image polyaxon/polyaxon-k8s-events-handlers:$1"
 docker push polyaxon/polyaxon-k8s-events-handlers:$1
 if [ "$1" == "master" ]

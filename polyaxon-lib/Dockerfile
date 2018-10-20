@@ -1,6 +1,6 @@
 FROM polyaxon/polyaxon-base
 
-MAINTAINER mourad mourafiq <mouradmourafiq@gmail.com>
+MAINTAINER mourad mourafiq <mourad@polyaxon.com>
 
 COPY requirements/requirements-base.txt /requirements/
 COPY requirements/requirements.txt /requirements/

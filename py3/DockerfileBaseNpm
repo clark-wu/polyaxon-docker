@@ -1,6 +1,6 @@
 FROM polyaxon/polyaxon-base
 
-MAINTAINER mourad mourafiq <mouradmourafiq@gmail.com>
+MAINTAINER mourad mourafiq <mourad@polyaxon.com>
 
 # nvm environment variables
 ENV NVM_DIR /usr/local/nvm
