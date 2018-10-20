@@ -7,7 +7,7 @@ ENV POLYAXON_SERVICE=events_handlers
 WORKDIR /polyaxon
 COPY . /polyaxon
 
-RUN pip3 install --no-cache-dir -r /requirements/events_handlers/requirements-dev.txt
+RUN pip3 install --no-cache-dir -r /requirements/k8s_events_handlers/requirements-dev.txt
 
 WORKDIR /polyaxon/polyaxon
 
