@@ -2,7 +2,7 @@ FROM polyaxon/polyaxon-core
 
 MAINTAINER mourad mourafiq <mouradmourafiq@gmail.com>
 
-ENV POLYAXON_SERVICE=events_handlers
+ENV POLYAXON_SERVICE=k8s_events_handlers
 
 WORKDIR /polyaxon
 COPY . /polyaxon
