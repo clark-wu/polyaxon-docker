@@ -28,6 +28,7 @@ echo "Staring build..."
 ./polyaxon/build-service.sh monolith "${IMAGE_TAG}"
 ./polyaxon/build-service.sh scheduler "${IMAGE_TAG}"
 ./polyaxon/build-service.sh sidecar "${IMAGE_TAG}"
+./polyaxon/build-service.sh tables "${IMAGE_TAG}"
 ./polyaxon/build-service.sh streams "${IMAGE_TAG}"
 
 echo "Cleaning up..."

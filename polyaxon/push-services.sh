@@ -96,6 +96,12 @@ if [ "$1" == "master" ]
     then
         docker push polyaxon/polyaxon-sidecar:latest
 fi
+echo "Push image polyaxon/polyaxon-tables:$1"
+docker push polyaxon/polyaxon-tables:$1
+if [ "$1" == "master" ]
+    then
+        docker push polyaxon/polyaxon-tables:latest
+fi
 echo "Push image polyaxon/polyaxon-streams:$1"
 docker push polyaxon/polyaxon-streams:$1
 if [ "$1" == "master" ]
