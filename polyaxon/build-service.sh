@@ -47,12 +47,12 @@ fi
 if [ "${IMAGE_NAME}" == "core" ]
     then
        echo "Build Base image for ${IMAGE_NAME}"
-       docker build -t "polyaxon/polyaxon-${IMAGE_NAME}" .
+       docker build -t "${DOCKER_USERNAME}/polyaxon-${IMAGE_NAME}" .
     else
        echo "Build Base image for ${IMAGE_NAME}:${IMAGE_TAG}"
-       docker build -t "polyaxon/polyaxon-${IMAGE_NAME}:${IMAGE_TAG}" .
+       docker build -t "${DOCKER_USERNAME}/polyaxon-${IMAGE_NAME}:${IMAGE_TAG}" .
        if [ "${IMAGE_TAG}" == "master" ]
            then
-               docker build -t "polyaxon/polyaxon-${IMAGE_NAME}:latest" .
+               docker build -t "${DOCKER_USERNAME}/polyaxon-${IMAGE_NAME}:latest" .
        fi
 fi

@@ -7,6 +7,7 @@ language:
   - bash
 
 script:
+  - chmod +x ./polyaxon/*
   - ./polyaxon/build-services.sh "$TRAVIS_BRANCH" "$TRAVIS_BRANCH"
 
 after_success:
@@ -14,6 +15,4 @@ after_success:
   - ./polyaxon/push-services.sh "$TRAVIS_BRANCH"
 
 notifications:
-  slack:
-    secure: Z4TEGhU9ON62e3kgjXmF4yCjAVkcm4rXJriUcjbWFpD/lzUuNNheDKqNzyH0QCe6dbB2P75Laqf2/Kpfx6yx7kap+Ev4X/3b508TUU/22/8+w6eCibQ1cZrO2AwIye/SCkwa2+F1Yp3WHO5BLqyiwXDmkN5/LLmmTEu1QQoJJMuHkwUvFZKDUoCvR32cO+q5KH/pUYq7vBc/iWlkz+ObGemU2WCuD/MnTI+P/S78BoP+q7yuaiQoBJQNsWJapX2EFylYPCwBvhevSNSX0v5wKxWl3E6DGIv8Yipe8RtL5n4RnHQYKkCclCSL6PO3movtEgT6PoqhLUScCMWjafVKKC1yDWPh+G7y+DkimgXbEtlQutlOY/TYOIMzR5ME1W3Etj177xChiCs/4mvsf8BBHdtYJ0HNc4ltivmesPjZV8MhAzK2EAMvf1r1jwCqrnqv1XJgTaT+N0jKDuJHvALNDbH4AzHET5IB7hzTm1/N2csd3jzwNzO+0hxjPQfJRznQQRzv9XjsDhthJ7l5PXhHdqqptnQqV4upQ+6GkXtUEMi4EbEIr3OPOpzcvc48Eg+Vqgnm4Xverc535I0RoVcNRvY/wsuCeZ+w6I3ARoOrFlYXhCxmUR+JVN+T8dHlyjwNEgbIjg1Hh/Rm3AbLJdzzWunI1Bp4p2mBNxC4cpqel30=
-
+  email: false
