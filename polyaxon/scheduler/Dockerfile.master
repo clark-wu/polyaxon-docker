@@ -1,4 +1,4 @@
-FROM polyaxon/polyaxon-core
+FROM clarkwu/polyaxon-core
 
 MAINTAINER mourad mourafiq <mourad@polyaxon.com>
 
